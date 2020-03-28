@@ -1,0 +1,99 @@
+ribbon:
+  ReadTimeout: 2000
+  ConnectTimeout: 2000
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+    healthCheck:
+      enabled: true
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+spring:
+  application:
+    name: gateway
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+  cache:
+    type: redis
+    cache-names: permission
+    redis:
+      time-to-live: 300000
+      cache-null-values: true
+  datasource:
+    #name: test
+    url: jdbc:mysql://localhost:3306/lsx?characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    #    username: root
+    #使用远程的配置中心的参数
+    password: root
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+server:
+  port: 8082
+feign:
+  hystrix:
+    enabled: true
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 8000
+# 熔断器DashBoard: actuator在boot2.0调整后开关web端点的配置，*代表开启所有
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+zuul:
+  #ignored-services: microservice-provider-system          # 需要忽视的服务(配置后将不会被路由)
+  routes:
+    service1:                                              # 可以随便写，在zuul上面唯一即可；当这里的值 = service-id时，service-id可以不写。
+      path: /user/**                                        # 想要映射到的路径
+      service-id: service-user    # Eureka中的serviceId
+    service2:
+      path: /dict/**
+      service-id: service-tyre
+    service3:
+      path: /tyre/**
+      service-id: service-tyre
+  # Eureka中的serviceId
+redis:
+  hostName: localhost
+  port: 6379
+  timeout: 30
+  maxIdle: 300
+  maxTotal: 1000
+  maxWaitMillis: 1000
+  minEvictableIdleTimeMillis: 300000
+  numTestsPerEvictionRun: 1024
+  timeBetweenEvictionRunsMillis: 30000
+  testOnBorrow: true
+  testWhileIdle: true
+  password: 123456

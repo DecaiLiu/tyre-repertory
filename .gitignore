@@ -1,0 +1,15 @@
+
+#idea工作空间过滤
+.idea/
+*/.idea/
+#idea配置文件过滤
+*.iml
+#maven过滤
+target/
+*.class
+#其他
+local.properties
+logs/
+*.log
+.DS_Store
+*.temp
