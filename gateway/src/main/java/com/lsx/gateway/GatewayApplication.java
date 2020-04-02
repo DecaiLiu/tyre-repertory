@@ -25,7 +25,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableFeignClients
 @EnableDiscoveryClient
 @EnableTransactionManagement
-@MapperScan("com.lsx.gateway")
 @ServletComponentScan
 @EnableHystrix
 @EnableHystrixDashboard

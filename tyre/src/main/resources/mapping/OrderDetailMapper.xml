@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lsx.tyre.dao.OrderDetailMapper">
+  <resultMap id="BaseResultMap" type="com.lsx.tyre.bean.OrderDetail">
+    <result column="order_id" jdbcType="BIGINT" property="orderId" />
+    <result column="tyre_id" jdbcType="BIGINT" property="tyreId" />
+    <result column="tyre_name" jdbcType="VARCHAR" property="tyreName" />
+    <result column="tyre_year" jdbcType="INTEGER" property="tyreYear" />
+    <result column="tyre_num" jdbcType="INTEGER" property="tyreNum" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="send_at" jdbcType="TIMESTAMP" property="sendAt" />
+    <result column="sign_at" jdbcType="TIMESTAMP" property="signAt" />
+    <result column="pay_method" jdbcType="BIGINT" property="payMethod" />
+    <result column="pay_at" jdbcType="TIMESTAMP" property="payAt" />
+    <result column="send_way" jdbcType="BIGINT" property="sendWay" />
+    <result column="send_address" jdbcType="VARCHAR" property="sendAddress" />
+    <result column="waybill_num" jdbcType="VARCHAR" property="waybillNum" />
+    <result column="customer_type" jdbcType="BIGINT" property="customerType" />
+    <result column="customer_name" jdbcType="VARCHAR" property="customerName" />
+    <result column="customer_phone" jdbcType="VARCHAR" property="customerPhone" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_at" jdbcType="TIMESTAMP" property="createAt" />
+    <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lsx.tyre.bean.OrderDetail">
+    insert into t_order_detail (order_id, tyre_id, tyre_name, 
+      tyre_year, tyre_num, price, 
+      send_at, sign_at, pay_method, 
+      pay_at, send_way, send_address, 
+      waybill_num, customer_type, customer_name, 
+      customer_phone, remark, create_at, 
+      update_at)
+    values (#{orderId,jdbcType=BIGINT}, #{tyreId,jdbcType=BIGINT}, #{tyreName,jdbcType=VARCHAR}, 
+      #{tyreYear,jdbcType=INTEGER}, #{tyreNum,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, 
+      #{sendAt,jdbcType=TIMESTAMP}, #{signAt,jdbcType=TIMESTAMP}, #{payMethod,jdbcType=BIGINT}, 
+      #{payAt,jdbcType=TIMESTAMP}, #{sendWay,jdbcType=BIGINT}, #{sendAddress,jdbcType=VARCHAR}, 
+      #{waybillNum,jdbcType=VARCHAR}, #{customerType,jdbcType=BIGINT}, #{customerName,jdbcType=VARCHAR}, 
+      #{customerPhone,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createAt,jdbcType=TIMESTAMP}, 
+      #{updateAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lsx.tyre.bean.OrderDetail">
+    insert into t_order_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        order_id,
+      </if>
+      <if test="tyreId != null">
+        tyre_id,
+      </if>
+      <if test="tyreName != null">
+        tyre_name,
+      </if>
+      <if test="tyreYear != null">
+        tyre_year,
+      </if>
+      <if test="tyreNum != null">
+        tyre_num,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="sendAt != null">
+        send_at,
+      </if>
+      <if test="signAt != null">
+        sign_at,
+      </if>
+      <if test="payMethod != null">
+        pay_method,
+      </if>
+      <if test="payAt != null">
+        pay_at,
+      </if>
+      <if test="sendWay != null">
+        send_way,
+      </if>
+      <if test="sendAddress != null">
+        send_address,
+      </if>
+      <if test="waybillNum != null">
+        waybill_num,
+      </if>
+      <if test="customerType != null">
+        customer_type,
+      </if>
+      <if test="customerName != null">
+        customer_name,
+      </if>
+      <if test="customerPhone != null">
+        customer_phone,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createAt != null">
+        create_at,
+      </if>
+      <if test="updateAt != null">
+        update_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="tyreId != null">
+        #{tyreId,jdbcType=BIGINT},
+      </if>
+      <if test="tyreName != null">
+        #{tyreName,jdbcType=VARCHAR},
+      </if>
+      <if test="tyreYear != null">
+        #{tyreYear,jdbcType=INTEGER},
+      </if>
+      <if test="tyreNum != null">
+        #{tyreNum,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="sendAt != null">
+        #{sendAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signAt != null">
+        #{signAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payMethod != null">
+        #{payMethod,jdbcType=BIGINT},
+      </if>
+      <if test="payAt != null">
+        #{payAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sendWay != null">
+        #{sendWay,jdbcType=BIGINT},
+      </if>
+      <if test="sendAddress != null">
+        #{sendAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="waybillNum != null">
+        #{waybillNum,jdbcType=VARCHAR},
+      </if>
+      <if test="customerType != null">
+        #{customerType,jdbcType=BIGINT},
+      </if>
+      <if test="customerName != null">
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerPhone != null">
+        #{customerPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createAt != null">
+        #{createAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateAt != null">
+        #{updateAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

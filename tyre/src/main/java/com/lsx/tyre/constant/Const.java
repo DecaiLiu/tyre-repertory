@@ -1,4 +1,4 @@
-package com.lsx.tyre.common;
+package com.lsx.tyre.constant;
 
 /**
  * 静态常量类

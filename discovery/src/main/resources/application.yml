@@ -1,18 +1,27 @@
-server:
-  port: 8081
-eureka:
-  instance:
-    LeaseExpirationDurationInSeconds: 15
-    LeaseRenewalIntervalInSeconds: 5
-    hostname: localhost
-    prefer-ip-address: true
-  server:
-    enableSelfPreservation: true
-    evictionIntervalTimerInMs: 4000
 
-  client:
-    registryFetchIntervalSeconds: 5
-    registerWithEureka: false
-    fetchRegistry: false
+# spring:
+#  application:
+#    name: eureka-server     # 服务名称,自定义 可以不设置
+#  security:                 # 不配置则无需认证登录
+#    user:
+#      name: lsx            # 配置BASIC认证登录的账号
+#      password: 123456      # 配置BASIC认证登录的密码
+
+server:
+  port: 8081 # 指定唯一的服务端口号
+eureka:
+  instance: # 服务实例配置项
+    LeaseExpirationDurationInSeconds: 15 # eureka服务器在删除此实例之前收到最后一次心跳之后等待的时间（s），默认90
+    LeaseRenewalIntervalInSeconds: 5 # 该服务实例向注册中心发送心跳间隔（s），默认30
+    hostname: localhost # 该服务实例所在主机名
+    prefer-ip-address: true # 是否优先使用服务实例的IP地址，相较于hostname，默认false
+  server: # Server 配置项
+    enableSelfPreservation: false   # 关闭自我保护模式（默认为打开）
+    evictionIntervalTimerInMs: 4000   # 续期时间，即扫描失效服务的间隔时间（缺省为60*1000ms）
+
+  client: # Client 配置项
+    registryFetchIntervalSeconds: 5 # 从eureka服务器获取注册表信息的频率（s），默认30s
+    registerWithEureka: false   # 禁止注册自身，只提供服务，如果为true，则既是服务端，又是客户端
+    fetchRegistry: false # 本机没有提供集群注册中心，所以不需要去注册中心拉取服务列表，默认是true
     serviceUrl:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/ # 服务中心地址

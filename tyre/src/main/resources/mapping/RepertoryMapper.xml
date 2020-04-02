@@ -4,13 +4,14 @@
   <resultMap id="BaseResultMap" type="com.lsx.tyre.bean.Repertory">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="tyre_id" jdbcType="BIGINT" property="tyreId" />
+    <result column="tyre_year" jdbcType="INTEGER" property="tyreYear" />
     <result column="total_num" jdbcType="INTEGER" property="totalNum" />
     <result column="sold_num" jdbcType="INTEGER" property="soldNum" />
     <result column="residue_num" jdbcType="INTEGER" property="residueNum" />
     <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, tyre_id, total_num, sold_num, residue_num, update_at
+    id, tyre_id, tyre_year, total_num, sold_num, residue_num, update_at
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -23,12 +24,12 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.lsx.tyre.bean.Repertory">
-    insert into t_repertory (id, tyre_id, total_num, 
-      sold_num, residue_num, update_at
-      )
-    values (#{id,jdbcType=BIGINT}, #{tyreId,jdbcType=BIGINT}, #{totalNum,jdbcType=INTEGER}, 
-      #{soldNum,jdbcType=INTEGER}, #{residueNum,jdbcType=INTEGER}, #{updateAt,jdbcType=TIMESTAMP}
-      )
+    insert into t_repertory (id, tyre_id, tyre_year, 
+      total_num, sold_num, residue_num, 
+      update_at)
+    values (#{id,jdbcType=BIGINT}, #{tyreId,jdbcType=BIGINT}, #{tyreYear,jdbcType=INTEGER}, 
+      #{totalNum,jdbcType=INTEGER}, #{soldNum,jdbcType=INTEGER}, #{residueNum,jdbcType=INTEGER}, 
+      #{updateAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lsx.tyre.bean.Repertory">
     insert into t_repertory
@@ -38,6 +39,9 @@
       </if>
       <if test="tyreId != null">
         tyre_id,
+      </if>
+      <if test="tyreYear != null">
+        tyre_year,
       </if>
       <if test="totalNum != null">
         total_num,
@@ -59,6 +63,9 @@
       <if test="tyreId != null">
         #{tyreId,jdbcType=BIGINT},
       </if>
+      <if test="tyreYear != null">
+        #{tyreYear,jdbcType=INTEGER},
+      </if>
       <if test="totalNum != null">
         #{totalNum,jdbcType=INTEGER},
       </if>
@@ -79,6 +86,9 @@
       <if test="tyreId != null">
         tyre_id = #{tyreId,jdbcType=BIGINT},
       </if>
+      <if test="tyreYear != null">
+        tyre_year = #{tyreYear,jdbcType=INTEGER},
+      </if>
       <if test="totalNum != null">
         total_num = #{totalNum,jdbcType=INTEGER},
       </if>
@@ -97,6 +107,7 @@
   <update id="updateByPrimaryKey" parameterType="com.lsx.tyre.bean.Repertory">
     update t_repertory
     set tyre_id = #{tyreId,jdbcType=BIGINT},
+      tyre_year = #{tyreYear,jdbcType=INTEGER},
       total_num = #{totalNum,jdbcType=INTEGER},
       sold_num = #{soldNum,jdbcType=INTEGER},
       residue_num = #{residueNum,jdbcType=INTEGER},

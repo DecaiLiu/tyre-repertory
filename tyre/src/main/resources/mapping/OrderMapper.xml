@@ -3,25 +3,20 @@
 <mapper namespace="com.lsx.tyre.dao.OrderMapper">
   <resultMap id="BaseResultMap" type="com.lsx.tyre.bean.Order">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="seqnum" jdbcType="VARCHAR" property="seqnum" />
-    <result column="tyre_type" jdbcType="BIGINT" property="tyreType" />
-    <result column="tyre_num" jdbcType="INTEGER" property="tyreNum" />
-    <result column="tyre_price" jdbcType="DOUBLE" property="tyrePrice" />
-    <result column="total_price" jdbcType="DOUBLE" property="totalPrice" />
-    <result column="real_price" jdbcType="DOUBLE" property="realPrice" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="pay_status" jdbcType="BIGINT" property="payStatus" />
-    <result column="pay_method" jdbcType="BIGINT" property="payMethod" />
-    <result column="pay_at" jdbcType="TIMESTAMP" property="payAt" />
+    <result column="status" jdbcType="BIGINT" property="status" />
     <result column="order_type" jdbcType="BIGINT" property="orderType" />
+    <result column="pay_status" jdbcType="BIGINT" property="payStatus" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="receivable" jdbcType="DOUBLE" property="receivable" />
+    <result column="real_price" jdbcType="DOUBLE" property="realPrice" />
     <result column="order_at" jdbcType="TIMESTAMP" property="orderAt" />
     <result column="create_at" jdbcType="TIMESTAMP" property="createAt" />
     <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
     <result column="deleted" jdbcType="INTEGER" property="deleted" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, seqnum, tyre_type, tyre_num, tyre_price, total_price, real_price, description, 
-    pay_status, pay_method, pay_at, order_type, order_at, create_at, update_at, deleted
+    id, status, order_type, pay_status, description, receivable, real_price, order_at, 
+    create_at, update_at, deleted
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -34,18 +29,14 @@
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.lsx.tyre.bean.Order">
-    insert into t_order (id, seqnum, tyre_type, 
-      tyre_num, tyre_price, total_price, 
-      real_price, description, pay_status, 
-      pay_method, pay_at, order_type, 
-      order_at, create_at, update_at, 
-      deleted)
-    values (#{id,jdbcType=BIGINT}, #{seqnum,jdbcType=VARCHAR}, #{tyreType,jdbcType=BIGINT}, 
-      #{tyreNum,jdbcType=INTEGER}, #{tyrePrice,jdbcType=DOUBLE}, #{totalPrice,jdbcType=DOUBLE}, 
-      #{realPrice,jdbcType=DOUBLE}, #{description,jdbcType=VARCHAR}, #{payStatus,jdbcType=BIGINT}, 
-      #{payMethod,jdbcType=BIGINT}, #{payAt,jdbcType=TIMESTAMP}, #{orderType,jdbcType=BIGINT}, 
-      #{orderAt,jdbcType=TIMESTAMP}, #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP}, 
-      #{deleted,jdbcType=INTEGER})
+    insert into t_order (id, status, order_type, 
+      pay_status, description, receivable, 
+      real_price, order_at, create_at, 
+      update_at, deleted)
+    values (#{id,jdbcType=BIGINT}, #{status,jdbcType=BIGINT}, #{orderType,jdbcType=BIGINT}, 
+      #{payStatus,jdbcType=BIGINT}, #{description,jdbcType=VARCHAR}, #{receivable,jdbcType=DOUBLE}, 
+      #{realPrice,jdbcType=DOUBLE}, #{orderAt,jdbcType=TIMESTAMP}, #{createAt,jdbcType=TIMESTAMP}, 
+      #{updateAt,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.lsx.tyre.bean.Order">
     insert into t_order
@@ -53,38 +44,23 @@
       <if test="id != null">
         id,
       </if>
-      <if test="seqnum != null">
-        seqnum,
+      <if test="status != null">
+        status,
       </if>
-      <if test="tyreType != null">
-        tyre_type,
-      </if>
-      <if test="tyreNum != null">
-        tyre_num,
-      </if>
-      <if test="tyrePrice != null">
-        tyre_price,
-      </if>
-      <if test="totalPrice != null">
-        total_price,
-      </if>
-      <if test="realPrice != null">
-        real_price,
-      </if>
-      <if test="description != null">
-        description,
+      <if test="orderType != null">
+        order_type,
       </if>
       <if test="payStatus != null">
         pay_status,
       </if>
-      <if test="payMethod != null">
-        pay_method,
+      <if test="description != null">
+        description,
       </if>
-      <if test="payAt != null">
-        pay_at,
+      <if test="receivable != null">
+        receivable,
       </if>
-      <if test="orderType != null">
-        order_type,
+      <if test="realPrice != null">
+        real_price,
       </if>
       <if test="orderAt != null">
         order_at,
@@ -103,38 +79,23 @@
       <if test="id != null">
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="seqnum != null">
-        #{seqnum,jdbcType=VARCHAR},
+      <if test="status != null">
+        #{status,jdbcType=BIGINT},
       </if>
-      <if test="tyreType != null">
-        #{tyreType,jdbcType=BIGINT},
-      </if>
-      <if test="tyreNum != null">
-        #{tyreNum,jdbcType=INTEGER},
-      </if>
-      <if test="tyrePrice != null">
-        #{tyrePrice,jdbcType=DOUBLE},
-      </if>
-      <if test="totalPrice != null">
-        #{totalPrice,jdbcType=DOUBLE},
-      </if>
-      <if test="realPrice != null">
-        #{realPrice,jdbcType=DOUBLE},
-      </if>
-      <if test="description != null">
-        #{description,jdbcType=VARCHAR},
+      <if test="orderType != null">
+        #{orderType,jdbcType=BIGINT},
       </if>
       <if test="payStatus != null">
         #{payStatus,jdbcType=BIGINT},
       </if>
-      <if test="payMethod != null">
-        #{payMethod,jdbcType=BIGINT},
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
       </if>
-      <if test="payAt != null">
-        #{payAt,jdbcType=TIMESTAMP},
+      <if test="receivable != null">
+        #{receivable,jdbcType=DOUBLE},
       </if>
-      <if test="orderType != null">
-        #{orderType,jdbcType=BIGINT},
+      <if test="realPrice != null">
+        #{realPrice,jdbcType=DOUBLE},
       </if>
       <if test="orderAt != null">
         #{orderAt,jdbcType=TIMESTAMP},
@@ -153,38 +114,23 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.lsx.tyre.bean.Order">
     update t_order
     <set>
-      <if test="seqnum != null">
-        seqnum = #{seqnum,jdbcType=VARCHAR},
+      <if test="status != null">
+        status = #{status,jdbcType=BIGINT},
       </if>
-      <if test="tyreType != null">
-        tyre_type = #{tyreType,jdbcType=BIGINT},
-      </if>
-      <if test="tyreNum != null">
-        tyre_num = #{tyreNum,jdbcType=INTEGER},
-      </if>
-      <if test="tyrePrice != null">
-        tyre_price = #{tyrePrice,jdbcType=DOUBLE},
-      </if>
-      <if test="totalPrice != null">
-        total_price = #{totalPrice,jdbcType=DOUBLE},
-      </if>
-      <if test="realPrice != null">
-        real_price = #{realPrice,jdbcType=DOUBLE},
-      </if>
-      <if test="description != null">
-        description = #{description,jdbcType=VARCHAR},
+      <if test="orderType != null">
+        order_type = #{orderType,jdbcType=BIGINT},
       </if>
       <if test="payStatus != null">
         pay_status = #{payStatus,jdbcType=BIGINT},
       </if>
-      <if test="payMethod != null">
-        pay_method = #{payMethod,jdbcType=BIGINT},
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
       </if>
-      <if test="payAt != null">
-        pay_at = #{payAt,jdbcType=TIMESTAMP},
+      <if test="receivable != null">
+        receivable = #{receivable,jdbcType=DOUBLE},
       </if>
-      <if test="orderType != null">
-        order_type = #{orderType,jdbcType=BIGINT},
+      <if test="realPrice != null">
+        real_price = #{realPrice,jdbcType=DOUBLE},
       </if>
       <if test="orderAt != null">
         order_at = #{orderAt,jdbcType=TIMESTAMP},
@@ -203,17 +149,12 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lsx.tyre.bean.Order">
     update t_order
-    set seqnum = #{seqnum,jdbcType=VARCHAR},
-      tyre_type = #{tyreType,jdbcType=BIGINT},
-      tyre_num = #{tyreNum,jdbcType=INTEGER},
-      tyre_price = #{tyrePrice,jdbcType=DOUBLE},
-      total_price = #{totalPrice,jdbcType=DOUBLE},
-      real_price = #{realPrice,jdbcType=DOUBLE},
-      description = #{description,jdbcType=VARCHAR},
-      pay_status = #{payStatus,jdbcType=BIGINT},
-      pay_method = #{payMethod,jdbcType=BIGINT},
-      pay_at = #{payAt,jdbcType=TIMESTAMP},
+    set status = #{status,jdbcType=BIGINT},
       order_type = #{orderType,jdbcType=BIGINT},
+      pay_status = #{payStatus,jdbcType=BIGINT},
+      description = #{description,jdbcType=VARCHAR},
+      receivable = #{receivable,jdbcType=DOUBLE},
+      real_price = #{realPrice,jdbcType=DOUBLE},
       order_at = #{orderAt,jdbcType=TIMESTAMP},
       create_at = #{createAt,jdbcType=TIMESTAMP},
       update_at = #{updateAt,jdbcType=TIMESTAMP},

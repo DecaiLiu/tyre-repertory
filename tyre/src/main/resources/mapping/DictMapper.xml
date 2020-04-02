@@ -11,7 +11,7 @@
     id, name, type, description
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_dict
     where id = #{id,jdbcType=BIGINT}
@@ -79,4 +79,9 @@
       description = #{description,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+    <select id="selectByType" resultMap="BaseResultMap">
+      select <include refid="Base_Column_List"/>
+      from t_dict
+      where type = #{type,jdbcType=INTEGER}
+    </select>
 </mapper>

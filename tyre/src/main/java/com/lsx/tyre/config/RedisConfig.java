@@ -1,8 +1,7 @@
-package com.lsx.tyre.common.config;
+package com.lsx.user.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -14,7 +13,6 @@ import redis.clients.jedis.JedisPoolConfig;
 
 
 @Configuration
-@EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
 
     @Value("${redis.hostName}")
@@ -31,6 +29,9 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     @Value("${redis.maxWaitMillis}")
     private Integer maxWaitMillis;
+
+    @Value("${redis.timeout}")
+    private Integer timeout;
 
     @Value("${redis.minEvictableIdleTimeMillis}")
     private Integer minEvictableIdleTimeMillis;
@@ -98,9 +99,9 @@ public class RedisConfig extends CachingConfigurerSupport {
         //端口号
         JedisConnectionFactory.setPort(port);
         //如果Redis设置有密码
-        JedisConnectionFactory.setPassword(redisPassword);
+//        JedisConnectionFactory.setPassword(redisPassword);
         //客户端超时时间单位是毫秒
-        JedisConnectionFactory.setTimeout(5000);
+        JedisConnectionFactory.setTimeout(timeout);
         return JedisConnectionFactory;
     }
 

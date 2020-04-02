@@ -24,7 +24,7 @@ eureka:
 
 spring:
   application:
-    name: service-user
+    name: service-tyre
   servlet:
     multipart:
       enabled: true
@@ -67,7 +67,7 @@ hystrix:
           enabled: true
         isolation:
           thread:
-            timeoutInMilliseconds: 6000
+            timeoutInMilliseconds: 8000
 # 熔断器DashBoard: actuator在boot2.0调整后开关web端点的配置，*代表开启所有
 management:
   endpoints:

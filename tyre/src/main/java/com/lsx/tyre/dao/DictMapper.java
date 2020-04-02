@@ -14,4 +14,6 @@ public interface DictMapper {
     int updateByPrimaryKeySelective(Dict record);
 
     int updateByPrimaryKey(Dict record);
+
+    Dict selectByType(Integer type);
 }
