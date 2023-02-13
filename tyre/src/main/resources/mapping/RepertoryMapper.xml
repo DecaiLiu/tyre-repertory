@@ -1,117 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lsx.tyre.dao.RepertoryMapper">
-  <resultMap id="BaseResultMap" type="com.lsx.tyre.bean.Repertory">
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="tyre_id" jdbcType="BIGINT" property="tyreId" />
-    <result column="tyre_year" jdbcType="INTEGER" property="tyreYear" />
-    <result column="total_num" jdbcType="INTEGER" property="totalNum" />
-    <result column="sold_num" jdbcType="INTEGER" property="soldNum" />
-    <result column="residue_num" jdbcType="INTEGER" property="residueNum" />
-    <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    id, tyre_id, tyre_year, total_num, sold_num, residue_num, update_at
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_repertory
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_repertory
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
-  <insert id="insert" parameterType="com.lsx.tyre.bean.Repertory">
-    insert into t_repertory (id, tyre_id, tyre_year, 
-      total_num, sold_num, residue_num, 
-      update_at)
-    values (#{id,jdbcType=BIGINT}, #{tyreId,jdbcType=BIGINT}, #{tyreYear,jdbcType=INTEGER}, 
-      #{totalNum,jdbcType=INTEGER}, #{soldNum,jdbcType=INTEGER}, #{residueNum,jdbcType=INTEGER}, 
-      #{updateAt,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.lsx.tyre.bean.Repertory">
-    insert into t_repertory
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="tyreId != null">
-        tyre_id,
-      </if>
-      <if test="tyreYear != null">
-        tyre_year,
-      </if>
-      <if test="totalNum != null">
-        total_num,
-      </if>
-      <if test="soldNum != null">
-        sold_num,
-      </if>
-      <if test="residueNum != null">
-        residue_num,
-      </if>
-      <if test="updateAt != null">
-        update_at,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=BIGINT},
-      </if>
-      <if test="tyreId != null">
-        #{tyreId,jdbcType=BIGINT},
-      </if>
-      <if test="tyreYear != null">
-        #{tyreYear,jdbcType=INTEGER},
-      </if>
-      <if test="totalNum != null">
-        #{totalNum,jdbcType=INTEGER},
-      </if>
-      <if test="soldNum != null">
-        #{soldNum,jdbcType=INTEGER},
-      </if>
-      <if test="residueNum != null">
-        #{residueNum,jdbcType=INTEGER},
-      </if>
-      <if test="updateAt != null">
-        #{updateAt,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lsx.tyre.bean.Repertory">
-    update t_repertory
-    <set>
-      <if test="tyreId != null">
-        tyre_id = #{tyreId,jdbcType=BIGINT},
-      </if>
-      <if test="tyreYear != null">
-        tyre_year = #{tyreYear,jdbcType=INTEGER},
-      </if>
-      <if test="totalNum != null">
+    <resultMap id="BaseResultMap" type="com.lsx.tyre.bean.Repertory">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="good_id" jdbcType="BIGINT" property="goodId"/>
+        <result column="good_year" jdbcType="INTEGER" property="goodYear"/>
+        <result column="total_num" jdbcType="INTEGER" property="totalNum"/>
+        <result column="sold_num" jdbcType="INTEGER" property="soldNum"/>
+        <result column="residue_num" jdbcType="INTEGER" property="residueNum"/>
+        <result column="create_at" jdbcType="TIMESTAMP" property="createAt"/>
+        <result column="update_at" jdbcType="TIMESTAMP" property="updateAt"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, good_id, good_year, total_num, sold_num, residue_num, create_at, update_at
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from repertory
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from repertory
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="com.lsx.tyre.bean.Repertory">
+        insert into repertory (id, good_id, good_year,
+        total_num, sold_num, residue_num, create_at,
+        update_at)
+        values (#{id,jdbcType=BIGINT}, #{goodId,jdbcType=BIGINT}, #{goodYear,jdbcType=INTEGER},
+        #{totalNum,jdbcType=INTEGER}, #{soldNum,jdbcType=INTEGER}, #{residueNum,jdbcType=INTEGER},
+        #{createAt,jdbcType=TIMESTAMP}, #{updateAt,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.lsx.tyre.bean.Repertory">
+        insert into repertory
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="goodId != null">
+                good_id,
+            </if>
+            <if test="goodYear != null">
+                good_year,
+            </if>
+            <if test="totalNum != null">
+                total_num,
+            </if>
+            <if test="soldNum != null">
+                sold_num,
+            </if>
+            <if test="residueNum != null">
+                residue_num,
+            </if>
+            <if test="createAt != null">
+                create_at,
+            </if>
+            <if test="updateAt != null">
+                update_at,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="goodId != null">
+                #{goodId,jdbcType=BIGINT},
+            </if>
+            <if test="goodYear != null">
+                #{goodYear,jdbcType=INTEGER},
+            </if>
+            <if test="totalNum != null">
+                #{totalNum,jdbcType=INTEGER},
+            </if>
+            <if test="soldNum != null">
+                #{soldNum,jdbcType=INTEGER},
+            </if>
+            <if test="residueNum != null">
+                #{residueNum,jdbcType=INTEGER},
+            </if>
+            <if test="createAt != null">
+                #{createAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateAt != null">
+                #{updateAt,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.lsx.tyre.bean.Repertory">
+        update repertory
+        <set>
+            <if test="goodId != null">
+                good_id = #{goodId,jdbcType=BIGINT},
+            </if>
+            <if test="goodYear != null">
+                good_year = #{goodYear,jdbcType=INTEGER},
+            </if>
+            <if test="totalNum != null">
+                total_num = #{totalNum,jdbcType=INTEGER},
+            </if>
+            <if test="soldNum != null">
+                sold_num = #{soldNum,jdbcType=INTEGER},
+            </if>
+            <if test="residueNum != null">
+                residue_num = #{residueNum,jdbcType=INTEGER},
+            </if>
+            <if test="updateAt != null">
+                update_at = #{updateAt,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.lsx.tyre.bean.Repertory">
+        update repertory
+        set good_id = #{goodId,jdbcType=BIGINT},
+        good_year = #{goodYear,jdbcType=INTEGER},
         total_num = #{totalNum,jdbcType=INTEGER},
-      </if>
-      <if test="soldNum != null">
         sold_num = #{soldNum,jdbcType=INTEGER},
-      </if>
-      <if test="residueNum != null">
         residue_num = #{residueNum,jdbcType=INTEGER},
-      </if>
-      <if test="updateAt != null">
-        update_at = #{updateAt,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.lsx.tyre.bean.Repertory">
-    update t_repertory
-    set tyre_id = #{tyreId,jdbcType=BIGINT},
-      tyre_year = #{tyreYear,jdbcType=INTEGER},
-      total_num = #{totalNum,jdbcType=INTEGER},
-      sold_num = #{soldNum,jdbcType=INTEGER},
-      residue_num = #{residueNum,jdbcType=INTEGER},
-      update_at = #{updateAt,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=BIGINT}
-  </update>
+        update_at = #{updateAt,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
 </mapper>

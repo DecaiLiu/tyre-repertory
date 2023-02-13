@@ -21,15 +21,15 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_order
+    from order
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_order
+    delete from order
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.lsx.tyre.bean.Order">
-    insert into t_order (id, status, order_type, 
+    insert into order (id, status, order_type, 
       pay_status, description, receivable, 
       real_price, order_at, create_at, 
       update_at, deleted)
@@ -39,7 +39,7 @@
       #{updateAt,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.lsx.tyre.bean.Order">
-    insert into t_order
+    insert into order
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -112,7 +112,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.lsx.tyre.bean.Order">
-    update t_order
+    update order
     <set>
       <if test="status != null">
         status = #{status,jdbcType=BIGINT},
@@ -148,7 +148,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lsx.tyre.bean.Order">
-    update t_order
+    update order
     set status = #{status,jdbcType=BIGINT},
       order_type = #{orderType,jdbcType=BIGINT},
       pay_status = #{payStatus,jdbcType=BIGINT},

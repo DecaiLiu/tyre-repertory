@@ -9,7 +9,6 @@ import java.util.Date;
  * 订单
  *
  * @author decai.liu
- * @date 2020/03/30
  */
 @Data
 public class Order implements Serializable {

@@ -19,14 +19,14 @@ public class Repertory implements Serializable {
     private Long id;
 
     /**
-     * 轮胎ID
+     * 商品ID
      */
-    private Long tyreId;
+    private Long goodId;
 
     /**
-     * 轮胎年月（202005）
+     * 商品年月（202005）
      */
-    private Integer tyreYear;
+    private Integer goodYear;
 
     /**
      * 总数量
@@ -42,6 +42,11 @@ public class Repertory implements Serializable {
      * 剩余数量
      */
     private Integer residueNum;
+
+    /**
+     * 创建时间
+     */
+    private Date createAt;
 
     /**
      * 更新时间

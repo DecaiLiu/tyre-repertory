@@ -13,21 +13,21 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from t_dict
+    from dict
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from t_dict
+    delete from dict
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.lsx.tyre.bean.Dict">
-    insert into t_dict (id, name, type, 
+    insert into dict (id, name, type, 
       description)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
       #{description,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.lsx.tyre.bean.Dict">
-    insert into t_dict
+    insert into dict
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -58,7 +58,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.lsx.tyre.bean.Dict">
-    update t_dict
+    update dict
     <set>
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
@@ -73,7 +73,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.lsx.tyre.bean.Dict">
-    update t_dict
+    update dict
     set name = #{name,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
       description = #{description,jdbcType=VARCHAR}
@@ -81,7 +81,7 @@
   </update>
     <select id="selectByType" resultMap="BaseResultMap">
       select <include refid="Base_Column_List"/>
-      from t_dict
+      from dict
       where type = #{type,jdbcType=INTEGER}
     </select>
 </mapper>

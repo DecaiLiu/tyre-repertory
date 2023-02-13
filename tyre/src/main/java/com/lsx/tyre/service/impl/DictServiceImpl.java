@@ -4,6 +4,7 @@ import com.lsx.base.vo.BaseVo;
 import com.lsx.tyre.bean.Dict;
 import com.lsx.tyre.dao.DictMapper;
 import com.lsx.tyre.service.DictService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
@@ -12,6 +13,7 @@ import javax.annotation.Resource;
  * @desc 字典项接口实现
  * @date 2020/03/30
  */
+@Service("dictService")
 public class DictServiceImpl implements DictService {
 
     @Resource
@@ -24,6 +26,7 @@ public class DictServiceImpl implements DictService {
      */
     @Override
     public void add(Dict toAdd) {
+        String s = "";
         dictMapper.insert(toAdd);
     }
 

@@ -9,37 +9,36 @@ import java.util.Date;
  * 订单详情
  *
  * @author decai.liu
- * @date 2020/03/30
  */
 @Data
 public class OrderDetail implements Serializable {
     /**
      * 订单流水号
      */
-    private Long orderId;
+    private Long id;
 
     /**
-     * 轮胎id
+     * 商品id
      */
-    private Long tyreId;
+    private Long goodId;
 
     /**
-     * 轮胎name
+     * 商品name
      */
-    private String tyreName;
+    private String goodName;
 
     /**
-     * 轮胎年月（202010）
+     * 商品年月（202010）
      */
-    private Integer tyreYear;
+    private Integer goodYear;
 
     /**
-     * 轮胎数量
+     * 商品数量
      */
-    private Integer tyreNum;
+    private Integer goodNum;
 
     /**
-     * 轮胎单价
+     * 商品单价
      */
     private Double price;
 

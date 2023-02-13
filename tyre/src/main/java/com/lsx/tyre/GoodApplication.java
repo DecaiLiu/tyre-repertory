@@ -28,9 +28,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableHystrixDashboard
 @EnableCircuitBreaker
 @EnableAsync
-public class TyreApplication {
+public class GoodApplication {
     public static void main(String[] args) {
 
-        SpringApplication.run(TyreApplication.class, args);
+        SpringApplication.run(GoodApplication.class, args);
     }
 }

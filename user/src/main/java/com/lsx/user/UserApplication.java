@@ -20,11 +20,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @date 2020-03-16
  */
 @SpringBootApplication(scanBasePackages = "com.lsx")
+@MapperScan("com.lsx.user.dao")
 @EnableEurekaClient
 @EnableFeignClients
 @EnableDiscoveryClient
 @EnableTransactionManagement
-@MapperScan("com.lsx.user.dao")
 @ServletComponentScan
 @EnableHystrix
 @EnableHystrixDashboard

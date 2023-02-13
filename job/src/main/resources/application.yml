@@ -37,15 +37,6 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 5000
-zuul:
-  #ignored-services: microservice-provider-system          # 需要忽视的服务(配置后将不会被路由)
-  routes:
-    service1:                                              # 可以随便写，在zuul上面唯一即可；当这里的值 = service-id时，service-id可以不写。
-      path: /user/**                                        # 想要映射到的路径
-      service-id: service-user    # Eureka中的serviceId
-    service2:                                              # 可以随便写，在zuul上面唯一即可；当这里的值 = service-id时，service-id可以不写。
-      path: /tyre/**                                        # 想要映射到的路径
-      service-id: service-tyre    # Eureka中的serviceId
 xxl:
   job:
     admin:

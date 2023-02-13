@@ -78,11 +78,8 @@ zuul:
       path: /user/**                                        # 想要映射到的路径
       service-id: service-user    # Eureka中的serviceId
     service2:
-      path: /dict/**
-      service-id: service-tyre
-    service3:
-      path: /tyre/**
-      service-id: service-tyre
+      path: /good/**
+      service-id: service-good
   # Eureka中的serviceId
 redis:
   hostName: localhost

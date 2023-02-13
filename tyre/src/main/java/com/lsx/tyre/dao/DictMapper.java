@@ -2,6 +2,8 @@ package com.lsx.tyre.dao;
 
 import com.lsx.tyre.bean.Dict;
 
+import java.util.List;
+
 public interface DictMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -15,5 +17,5 @@ public interface DictMapper {
 
     int updateByPrimaryKey(Dict record);
 
-    Dict selectByType(Integer type);
+    List<Dict> selectByType(Integer type);
 }

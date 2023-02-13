@@ -24,7 +24,7 @@ eureka:
 
 spring:
   application:
-    name: service-tyre
+    name: service-good
   servlet:
     multipart:
       enabled: true
@@ -78,3 +78,6 @@ management:
 mybatis:
   mapper-locations: classpath:mapping/*.xml
   config-location:  classpath:mybatis-config.xml
+
+single:
+  login: false

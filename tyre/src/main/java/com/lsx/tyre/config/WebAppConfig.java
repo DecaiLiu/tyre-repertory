@@ -13,7 +13,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 /**
  * @author decai.liu
  * @desc web 配置
- * @date 2020/03/24
  */
 @Configuration
 public class WebAppConfig extends WebMvcConfigurationSupport {

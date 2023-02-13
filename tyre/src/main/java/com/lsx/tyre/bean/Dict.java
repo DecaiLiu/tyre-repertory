@@ -8,7 +8,6 @@ import java.io.Serializable;
  * 字典项
  *
  * @author decai.liu
- * @date 2020/03/23
  */
 @Data
 public class Dict implements Serializable {

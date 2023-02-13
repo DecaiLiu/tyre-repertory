@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping(name = "轮胎服务Api")
+@RequestMapping(name = "商品管理服务Api")
 @Slf4j
-public class TyreController {
+public class GoodController {
 
     @Resource
     private DictService dictService;
@@ -23,19 +23,19 @@ public class TyreController {
     // ================================================= 字典 ==================================================
 
     @HystrixCommand
-    @GetMapping(name = "查询字典类型", path = "/dict/add-tyre")
+    @PostMapping(name = "新增轮胎类型", path = "/dict/add-tyre")
+    @Authorization
     public BaseVo addTyre(@RequestBody @Validated Dict dict) {
         Dict toAdd = new Dict();
         toAdd.setName(dict.getName());
         toAdd.setDescription(dict.getDescription());
-        toAdd.setType(DictTypeEnum.TYRE_TYPE.value);
+        toAdd.setType(DictTypeEnum.GOOD_TYPE.value);
         dictService.add(toAdd);
         return new BaseVo();
     }
 
     @HystrixCommand
-    @PostMapping(name = "新增轮胎类型", path = "/dict/types")
-    @Authorization
+    @GetMapping(name = "查询字典项列表", path = "/dict/types")
     public BaseVo listDictTypes() {
         return new BaseVo(DictTypeEnum.list);
     }
@@ -53,7 +53,7 @@ public class TyreController {
     }
 
     @HystrixCommand
-    @GetMapping(name = "查询字典项", path = "/dict/{type}")
+    @GetMapping(name = "查询某类型字典", path = "/dict/types/{type}")
     public BaseVo getDict(@PathVariable("type") Integer type) {
         return dictService.findByType(type);
     }

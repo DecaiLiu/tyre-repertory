@@ -15,7 +15,7 @@ import java.util.Map;
 public enum DictTypeEnum {
 
     SEX(0, "性别"),
-    TYRE_TYPE(1, "轮胎类型"),
+    GOOD_TYPE(1, "商品类型"),
     CUSTOMER_TYPE(2, "客户类型"),
     PAY_STATUS(3, "付款状态"),
     PAY_WAY(4, "付款方式"),

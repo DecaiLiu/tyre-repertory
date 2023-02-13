@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.lsx.tyre.dao.OrderDetailMapper">
   <resultMap id="BaseResultMap" type="com.lsx.tyre.bean.OrderDetail">
-    <result column="order_id" jdbcType="BIGINT" property="orderId" />
-    <result column="tyre_id" jdbcType="BIGINT" property="tyreId" />
-    <result column="tyre_name" jdbcType="VARCHAR" property="tyreName" />
-    <result column="tyre_year" jdbcType="INTEGER" property="tyreYear" />
-    <result column="tyre_num" jdbcType="INTEGER" property="tyreNum" />
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="good_id" jdbcType="BIGINT" property="goodId" />
+    <result column="good_name" jdbcType="VARCHAR" property="goodName" />
+    <result column="good_year" jdbcType="INTEGER" property="goodYear" />
+    <result column="good_num" jdbcType="INTEGER" property="goodNum" />
     <result column="price" jdbcType="DOUBLE" property="price" />
     <result column="send_at" jdbcType="TIMESTAMP" property="sendAt" />
     <result column="sign_at" jdbcType="TIMESTAMP" property="signAt" />
@@ -23,38 +23,38 @@
     <result column="update_at" jdbcType="TIMESTAMP" property="updateAt" />
   </resultMap>
   <insert id="insert" parameterType="com.lsx.tyre.bean.OrderDetail">
-    insert into t_order_detail (order_id, tyre_id, tyre_name, 
-      tyre_year, tyre_num, price, 
-      send_at, sign_at, pay_method, 
-      pay_at, send_way, send_address, 
-      waybill_num, customer_type, customer_name, 
-      customer_phone, remark, create_at, 
-      update_at)
-    values (#{orderId,jdbcType=BIGINT}, #{tyreId,jdbcType=BIGINT}, #{tyreName,jdbcType=VARCHAR}, 
-      #{tyreYear,jdbcType=INTEGER}, #{tyreNum,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE}, 
-      #{sendAt,jdbcType=TIMESTAMP}, #{signAt,jdbcType=TIMESTAMP}, #{payMethod,jdbcType=BIGINT}, 
-      #{payAt,jdbcType=TIMESTAMP}, #{sendWay,jdbcType=BIGINT}, #{sendAddress,jdbcType=VARCHAR}, 
-      #{waybillNum,jdbcType=VARCHAR}, #{customerType,jdbcType=BIGINT}, #{customerName,jdbcType=VARCHAR}, 
-      #{customerPhone,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createAt,jdbcType=TIMESTAMP}, 
-      #{updateAt,jdbcType=TIMESTAMP})
+    insert into order_detail (id, good_id, good_name,
+    good_year, good_num, price,
+    send_at, sign_at, pay_method,
+    pay_at, send_way, send_address,
+    waybill_num, customer_type, customer_name,
+    customer_phone, remark, create_at,
+    update_at)
+    values (#{id,jdbcType=BIGINT}, #{goodId,jdbcType=BIGINT}, #{goodName,jdbcType=VARCHAR},
+    #{goodYear,jdbcType=INTEGER}, #{goodNum,jdbcType=INTEGER}, #{price,jdbcType=DOUBLE},
+    #{sendAt,jdbcType=TIMESTAMP}, #{signAt,jdbcType=TIMESTAMP}, #{payMethod,jdbcType=BIGINT},
+    #{payAt,jdbcType=TIMESTAMP}, #{sendWay,jdbcType=BIGINT}, #{sendAddress,jdbcType=VARCHAR},
+    #{waybillNum,jdbcType=VARCHAR}, #{customerType,jdbcType=BIGINT}, #{customerName,jdbcType=VARCHAR},
+    #{customerPhone,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createAt,jdbcType=TIMESTAMP},
+    #{updateAt,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.lsx.tyre.bean.OrderDetail">
-    insert into t_order_detail
+    insert into order_detail
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        order_id,
+      <if test="id != null">
+        id,
       </if>
-      <if test="tyreId != null">
-        tyre_id,
+      <if test="goodId != null">
+        good_id,
       </if>
-      <if test="tyreName != null">
-        tyre_name,
+      <if test="goodName != null">
+        good_name,
       </if>
-      <if test="tyreYear != null">
-        tyre_year,
+      <if test="goodYear != null">
+        good_year,
       </if>
-      <if test="tyreNum != null">
-        tyre_num,
+      <if test="goodNum != null">
+        good_num,
       </if>
       <if test="price != null">
         price,
@@ -100,20 +100,20 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="orderId != null">
-        #{orderId,jdbcType=BIGINT},
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
       </if>
-      <if test="tyreId != null">
-        #{tyreId,jdbcType=BIGINT},
+      <if test="goodId != null">
+        #{goodId,jdbcType=BIGINT},
       </if>
-      <if test="tyreName != null">
-        #{tyreName,jdbcType=VARCHAR},
+      <if test="goodName != null">
+        #{goodName,jdbcType=VARCHAR},
       </if>
-      <if test="tyreYear != null">
-        #{tyreYear,jdbcType=INTEGER},
+      <if test="goodYear != null">
+        #{goodYear,jdbcType=INTEGER},
       </if>
-      <if test="tyreNum != null">
-        #{tyreNum,jdbcType=INTEGER},
+      <if test="goodNum != null">
+        #{goodNum,jdbcType=INTEGER},
       </if>
       <if test="price != null">
         #{price,jdbcType=DOUBLE},
